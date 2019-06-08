@@ -1,13 +1,15 @@
 from socket import *
 
-serverName = 'hostname'
-serverPort = '12000'
+serverName = '192.168.0.146'
+serverPort = 12000
 clientSocket = socket(AF_INET, SOCK_DGRAM)
 
-message = raw_input ('Input lowecase sentence:')
-clientSocket.sendto(message.encode(), (serverName, serverPort))
+message = ""
+while message != "q":
+    message = input ('Input lowercase sentence: ')
+    clientSocket.sendto(message.encode(), (serverName, serverPort))
 
-modifiedMessage, serverAddress = clientSocket.recvfrom(2048)
-print(modifiedMessage.decode())
+    modifiedMessage, serverAddress = clientSocket.recvfrom(2048)
+    print(modifiedMessage.decode())
 
 clientSocket.close()

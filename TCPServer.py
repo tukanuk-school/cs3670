@@ -10,7 +10,7 @@ connectionSocket, addr = serverSocket.accept()
 
 while True:
     message = connectionSocket.recv(2048).decode()
-    modifiedMessage = message().upper()
+    modifiedMessage = message.upper()
     connectionSocket.send(modifiedMessage.encode() )
 
 connectionSocket.close()
